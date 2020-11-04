@@ -1,9 +1,6 @@
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class query {
 
@@ -11,7 +8,7 @@ public class query {
     private String make;
     private String model;
     private String classof;
-    private int year;
+    private Date year;
     private String engine;
     private String category;
 
@@ -23,8 +20,11 @@ public class query {
 
     }
 
+    public void setConnection(Connection connection){
+        this.connection = connection;
+    }
     public void print() {
-        System.out.printf("%s %s %s %d %s %s",
+        System.out.printf("%s %s %s %tY %s %s \n",
                 make,model,engine,year,classof,category);
 
     }
@@ -40,17 +40,18 @@ public class query {
                 "INNER JOIN model ON cars.model_id = model.id\n" +
                 "INNER JOIN make ON model.make_id = make.id\n" +
                 "INNER JOIN class ON model.class_id = class.id\n" +
-                "INNER JOIN category ON model.category_id = category.id;\n");
+                "INNER JOIN category ON model.category_id = category.id");
         ResultSet result = preparedStatement.executeQuery();
         while(result.next()){
-           make =  result.getString("make.make");
-           model = result.getString("model.model");
-           classof = result.getString("class.class");
-           category = result.getString("category.category");
-           engine = result.getString("cars.engine");
-           year = result.getInt("model.year");
+            make =  result.getString("make");
+            model = result.getString("model");
+            classof = result.getString("class");
+            category = result.getString("category");
+            engine = result.getString("engine");
+            year = result.getDate("year");
 
-           print();
+            print();
+
         }
     }
 

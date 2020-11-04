@@ -13,9 +13,12 @@ public class Engine implements Runnable {
         this.connection = connection;
     }
 
+    query obj = new query();
 
     @Override
     public void run() {
+
+        obj.setConnection(connection);
 
         try {
             this.finalprice();
@@ -24,8 +27,15 @@ public class Engine implements Runnable {
         }
 
 
+        try {
+            this.obj.freeCars();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
     }
-    query obj = new query(connection);
+
 
     public long getDates(int id) throws SQLException{ //пресмятаме за колко дена колата е наета
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -38,15 +48,15 @@ public class Engine implements Runnable {
         ResultSet result = preparedStatement.executeQuery();
 
         while (result.next()) {
-                from = result.getDate("daysFrom");
-                to = result.getDate("daysTo");
+            from = result.getDate("daysFrom");
+            to = result.getDate("daysTo");
 
         }
-            long rentalDays = to.getTime() - from.getTime();//пресмята милисекундите между двете дати и след това ги умножаваме за да ги превърнем в дни
-            long days = ((rentalDays) / (1000*60*60*24));  //милисекунди * секунди * минути * часове
+        long rentalDays = to.getTime() - from.getTime();//пресмята милисекундите между двете дати и след това ги умножаваме за да ги превърнем в дни
+        long days = ((rentalDays) / (1000*60*60*24));  //милисекунди * секунди * минути * часове
 
 
-            return days;
+        return days;
 
     }
 
@@ -67,11 +77,11 @@ public class Engine implements Runnable {
 
         ResultSet result = preparedStatement.executeQuery();
         while (result.next()) {
-                km = result.getDouble("kilometers");
+            km = result.getDouble("kilometers");
         }
 
 
-            //взимаме id-то на колата и цената на за ден която вече сме задали в базата
+        //взимаме id-то на колата и цената на за ден която вече сме задали в базата
         preparedStatement = connection.prepareStatement("SELECT cars.price,cars.id FROM rent INNER JOIN cars ON rent.cars_id = cars.id WHERE rent.id = ?");
         preparedStatement.setInt(1,1);
 
@@ -81,21 +91,21 @@ public class Engine implements Runnable {
             cars_id = result.getInt("id");
         }
         double diff = 0;
-       if((days * 100) < km){  //при изминаване на повече от **еди си** колко км на ден се прибавя по 0.05 към всеки следващ километър.
-           diff = km - (days * 10);
-           diff = diff * 0.05;
-       }
+        if((days * 100) < km){  //при изминаване на повече от **еди си** колко км на ден се прибавя по 0.05 към всеки следващ километър.
+            diff = km - (days * 10);
+            diff = diff * 0.05;
+        }
 
 
-       //Пресмятане на опита на клиент
-       preparedStatement = connection.prepareStatement("SELECT client.experience,client.id FROM rent INNER JOIN client ON rent.client_id = client.id WHERE rent.id = ?");
-       preparedStatement.setInt(1,1);
-       int exp = 0;
-       result = preparedStatement.executeQuery();
-       while(result.next()){
-           client_id = result.getInt("id");
-           exp = result.getInt("experience");
-       }
+        //Пресмятане на опита на клиент
+        preparedStatement = connection.prepareStatement("SELECT client.experience,client.id FROM rent INNER JOIN client ON rent.client_id = client.id WHERE rent.id = ?");
+        preparedStatement.setInt(1,1);
+        int exp = 0;
+        result = preparedStatement.executeQuery();
+        while(result.next()){
+            client_id = result.getInt("id");
+            exp = result.getInt("experience");
+        }
         double discount = 0;
         finalprice = (price * days) + diff;//оригинална финална цена
         if(exp > 5 && exp < 10){//при опит между 5 и 10 години 5% намаление.
@@ -126,8 +136,8 @@ public class Engine implements Runnable {
         preparedStatement.setInt(4,1);
         preparedStatement.setInt(5,client_id);
         preparedStatement.setInt(6,1);*/
-        System.out.printf("\n %d\n %d\n %.2f\n %.2f\n %.2f\n %d\n discount:%.2f\n diff:%.2f",
-                                client_id,cars_id,km,price,finalprice,days,discount,diff);
+        System.out.printf("\n %d\n %d\n %.2f\n %.2f\n %.2f\n %d\n discount:%.2f\n diff:%.2f\n",
+                client_id,cars_id,km,price,finalprice,days,discount,diff);
     }
 
 }
