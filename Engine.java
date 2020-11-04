@@ -1,3 +1,6 @@
+import oracle.ucp.proxy.annotation.Pre;
+
+import java.awt.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -15,10 +18,36 @@ public class Engine implements Runnable {
 
     query obj = new query();
 
+
     @Override
     public void run() {
 
+        Scanner scanner = new Scanner(System.in);//скенер за четене на запис
+        int id = 4;
+        Client client = new Client(connection);
         obj.setConnection(connection);
+        System.out.println("name:");
+        client.setName(scanner.nextLine());
+        System.out.println("\nphone:");
+        client.setPhone(scanner.nextLine());
+        System.out.println("\nexperience:");
+        client.setExperience(Integer.parseInt(scanner.nextLine()));
+        System.out.println("\nemail:");
+        client.setEmail(scanner.nextLine());
+
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO client(id, name, phone, experience, email) VALUES(?, ?, ?, ?, ?)");
+            preparedStatement.setInt(1,id);
+            preparedStatement.setString(2,client.getName());
+            preparedStatement.setString(3,client.getPhone());
+            preparedStatement.setInt(4,client.getExperience());
+            preparedStatement.setString(5,client.getEmail());
+            preparedStatement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
         try {
             this.finalprice();
@@ -33,6 +62,11 @@ public class Engine implements Runnable {
             throwables.printStackTrace();
         }
 
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
@@ -65,6 +99,8 @@ public class Engine implements Runnable {
         Scanner scanner = new Scanner(System.in);//скенер за четене на запис
         //System.out.println("id:");
         //int id = scanner.nextInt();
+
+
         //инициализация на променливи
         int cars_id = 0,client_id = 0;
         double km = 0,price = 0,finalprice = 0;
@@ -72,6 +108,7 @@ public class Engine implements Runnable {
 
 
         //Id на самото отдаване и изминатите километри.
+        Statement statement;
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT rent.kilometers FROM rent WHERE id = ?");
         preparedStatement.setInt(1,1);
 
@@ -129,15 +166,14 @@ public class Engine implements Runnable {
         //записваме данните за плащането в таблицата в базата данни.
         int p_id = 0;
         p_id++;
-       /* preparedStatement = connection.prepareStatement("INSERT INTO payment (id, finalprice, cars_id, rent_id, client_id, problem_id) VALUES(?, ?, ?, ?, ?, ?)");
+        preparedStatement = connection.prepareStatement("INSERT INTO payment (id, finalprice, cars_id, rent_id, client_id, problem_id) VALUES( ?, ?, ?, ?, ?, ?)");
         preparedStatement.setInt(1,p_id);
         preparedStatement.setDouble(2,finalprice);
         preparedStatement.setInt(3,cars_id);
         preparedStatement.setInt(4,1);
         preparedStatement.setInt(5,client_id);
-        preparedStatement.setInt(6,1);*/
-        System.out.printf("\n %d\n %d\n %.2f\n %.2f\n %.2f\n %d\n discount:%.2f\n diff:%.2f\n",
-                client_id,cars_id,km,price,finalprice,days,discount,diff);
+        preparedStatement.setInt(6,1);
+        preparedStatement.execute();
     }
 
 }
