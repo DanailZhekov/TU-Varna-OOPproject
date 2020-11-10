@@ -16,37 +16,13 @@ public class Engine implements Runnable {
         this.connection = connection;
     }
 
-    query obj = new query();
+
 
 
     @Override
     public void run() {
-
-        Scanner scanner = new Scanner(System.in);//скенер за четене на запис
-        int id = 4;
         Client client = new Client(connection);
-        obj.setConnection(connection);
-        System.out.println("name:");
-        client.setName(scanner.nextLine());
-        System.out.println("\nphone:");
-        client.setPhone(scanner.nextLine());
-        System.out.println("\nexperience:");
-        client.setExperience(Integer.parseInt(scanner.nextLine()));
-        System.out.println("\nemail:");
-        client.setEmail(scanner.nextLine());
-
-
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO client(id, name, phone, experience, email) VALUES(?, ?, ?, ?, ?)");
-            preparedStatement.setInt(1,id);
-            preparedStatement.setString(2,client.getName());
-            preparedStatement.setString(3,client.getPhone());
-            preparedStatement.setInt(4,client.getExperience());
-            preparedStatement.setString(5,client.getEmail());
-            preparedStatement.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        query query = new query(connection);
 
 
         try {
@@ -57,7 +33,7 @@ public class Engine implements Runnable {
 
 
         try {
-            this.obj.freeCars();
+            query.freeCars();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

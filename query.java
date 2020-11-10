@@ -40,7 +40,9 @@ public class query {
                 "INNER JOIN model ON cars.model_id = model.id\n" +
                 "INNER JOIN make ON model.make_id = make.id\n" +
                 "INNER JOIN class ON model.class_id = class.id\n" +
-                "INNER JOIN category ON model.category_id = category.id");
+                "INNER JOIN category ON model.category_id = category.id \n" +
+                "WHERE cars.id NOT IN (SELECT rent.cars_id FROM rent) OR \n" +
+                "SYSDATE NOT BETWEEN rent.daysfrom AND rent.daysto");
         ResultSet result = preparedStatement.executeQuery();
         while(result.next()){
             make =  result.getString("make");
