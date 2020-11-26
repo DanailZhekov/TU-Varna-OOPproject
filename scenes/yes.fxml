@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="916.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.querycontroller">
+   <children>
+      <BorderPane layoutY="1.0" prefHeight="85.0" prefWidth="916.0" style="-fx-background-color: white;">
+         <left>
+            <ImageView fitHeight="112.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@rent.jpg" />
+               </image>
+            </ImageView>
+         </left>
+         <center>
+            <BorderPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <center>
+                  <Label fx:id="trylabel" alignment="CENTER" onMouseEntered="#changinglabel" onMouseExited="#changeback" prefHeight="112.0" prefWidth="717.0" style="-fx-background-color: #4682B4;" text="Най-добрите коли и цени са при нас" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </center></BorderPane>
+      <AnchorPane layoutX="26.0" layoutY="125.0" prefHeight="120.0" prefWidth="865.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="205.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Клас кола:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="Car_pic" fitHeight="120.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/civic/5e63e9a2f6ba0873d338ccb3o.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="205.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Двигател:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разход на гориво:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="750.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="За непушачи">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Километри:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button id="Civic" fx:id="pictures" layoutX="663.0" layoutY="83.0" mnemonicParsing="false" onAction="#showpics" text="Още информация" />
+            <Button id="Civic" fx:id="rent" layoutX="786.0" layoutY="83.0" mnemonicParsing="false" onAction="#rent" text="Поръчка" />
+            <Text layoutX="455.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Година на производство:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Марка:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="Car_category" layoutX="296.0" layoutY="15.0" prefHeight="7.0" prefWidth="124.0" text="Градска, Хечбек">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="Make" layoutX="271.0" layoutY="33.0" prefHeight="31.0" prefWidth="107.0" text="Honda Civic">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="engine" layoutX="289.0" layoutY="59.0" prefHeight="31.0" prefWidth="116.0" text="2.0V-tec 310к.с.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="consumption" layoutX="360.0" layoutY="80.0" prefHeight="31.0" prefWidth="37.0" text="10л.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="year" layoutX="670.0" layoutY="10.0" prefHeight="37.0" prefWidth="51.0" text="2016">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="kilometers" layoutX="559.0" layoutY="37.0" prefHeight="24.0" prefWidth="58.0" text="56 000">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="26.0" layoutY="252.0" prefHeight="120.0" prefWidth="865.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Passat/5fa031525488c904ab0eaea2o.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="205.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Клас кола:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Двигател:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разход на гориво:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="750.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="За пушачи">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Километри:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button id="Passat" layoutX="664.0" layoutY="82.0" mnemonicParsing="false" onAction="#showpics" text="Още информация" />
+            <Button id="Passat" layoutX="786.0" layoutY="82.0" mnemonicParsing="false" onAction="#rent" text="Поръчка" />
+            <Text layoutX="455.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Година на производство:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Марка:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="296.0" layoutY="16.0" prefHeight="25.0" prefWidth="124.0" text="Семейма, Комби">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="268.0" layoutY="34.0" prefHeight="31.0" prefWidth="148.0" text="Volkswagen Passat">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="289.0" layoutY="59.0" prefHeight="31.0" prefWidth="107.0" text="2.0TDI 150к.с.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="358.0" layoutY="82.0" prefHeight="31.0" prefWidth="43.0" text="9л.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="667.0" layoutY="11.0" prefHeight="31.0" prefWidth="43.0" text="2009">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="557.0" layoutY="35.0" prefHeight="31.0" prefWidth="65.0" text="140 000">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="26.0" layoutY="380.0" prefHeight="120.0" prefWidth="865.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Sclass/5ebad72e343c2304352eb882o.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="205.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Клас кола:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Двигател:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разход на гориво:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="750.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="За непушачи">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Километри:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button id="S500" layoutX="664.0" layoutY="82.0" mnemonicParsing="false" onAction="#showpics" text="Още информация" />
+            <Button id="S500" layoutX="786.0" layoutY="82.0" mnemonicParsing="false" onAction="#rent" text="Поръчка" />
+            <Text layoutX="455.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Година на производство:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Марка:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="295.0" layoutY="11.0" prefHeight="31.0" prefWidth="134.0" text="Луксозна, Седан">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="271.0" layoutY="37.0" prefHeight="24.0" prefWidth="124.0" text="Mercedes S500">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="295.0" layoutY="56.0" prefHeight="37.0" prefWidth="107.0" text="5.0 v8 455к.с.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="359.0" layoutY="85.0" prefHeight="25.0" prefWidth="43.0" text="20л.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="669.0" layoutY="12.0" prefHeight="31.0" prefWidth="43.0" text="2017">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="559.0" layoutY="35.0" prefHeight="31.0" prefWidth="58.0" text="30 000">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="26.0" layoutY="507.0" prefHeight="120.0" prefWidth="865.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Micra/Micra.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="205.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Клас кола:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Двигател:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Разход на гориво:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="750.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="За пушачи">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Километри:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button id="Micra" layoutX="664.0" layoutY="82.0" mnemonicParsing="false" onAction="#showpics" text="Още информация" />
+            <Button id="Micra" layoutX="786.0" layoutY="82.0" mnemonicParsing="false" onAction="#rent" text="Поръчка" />
+            <Text layoutX="455.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Година на производство:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Марка:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="292.0" layoutY="16.0" prefHeight="25.0" prefWidth="134.0" text=" Градска, Хечбек">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="36.0" prefHeight="25.0" prefWidth="124.0" text=" Nissan Micra">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="284.0" layoutY="59.0" prefHeight="31.0" prefWidth="87.0" text=" 1.2i 75к.с">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="353.0" layoutY="79.0" prefHeight="37.0" prefWidth="43.0" text=" 5л.">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="664.0" layoutY="13.0" prefHeight="31.0" prefWidth="51.0" text=" 2016">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="559.0" layoutY="36.0" prefHeight="11.0" prefWidth="58.0" text="65 000">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button layoutX="831.0" layoutY="649.0" mnemonicParsing="false" onAction="#testing" prefHeight="37.0" prefWidth="60.0" text="Next" />
+      <TextField layoutY="677.0" prefHeight="31.0" prefWidth="158.0" text="Телефон: 088888888">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button layoutX="569.0" layoutY="649.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="158.0" text="Търсене с филтри" />
+      <Button layoutY="646.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" text="Login as admin" />
+   </children>
+</AnchorPane>
