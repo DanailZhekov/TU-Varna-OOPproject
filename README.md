@@ -1,2 +1,2 @@
 # TU-Varna-OOPproject
- java school project
+ Java project for renting cars, Oracle DB and JavaFX GUI.
